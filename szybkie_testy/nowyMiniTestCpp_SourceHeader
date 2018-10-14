@@ -1,0 +1,64 @@
+#!/bin/bash
+
+
+jak_uzywac() {
+cat 1>&2 <<EOF
+
+./`basename $0` nazwa
+
+    Skrypt generuje szkielety prostych programow C++
+    stanowiace pusta pare zrodlo/naglowek.
+
+EOF
+}
+
+juz_istnieje() {
+    echo "*** $1 juz tu istnieje. Wybierz inna nazwe." 1>&2
+}
+
+
+if [ $# -ne 1 ]; then
+    jak_uzywac
+    exit 1
+fi
+
+if [ $# -gt 0 ] && ([ $1 == "-h" ] || [ $1 == "-help" ] || [ $1 == "--help" ]); then
+    jak_uzywac; exit 1
+fi
+
+# ========================================================================================
+
+
+SCIEZKA_DO_PLIKU_WZORCA="./modele"
+
+NAZWA_PLIKU_WZORCA__CPP="modelSourceHeaderPair_Source.cpp"
+NAZWA_PLIKU_WZORCA__HPP="modelSourceHeaderPair_Header.hpp"
+
+MODUL_TRESCI_WYNIKU__CPP=$SCIEZKA_DO_PLIKU_WZORCA"/"$NAZWA_PLIKU_WZORCA__CPP
+MODUL_TRESCI_WYNIKU__HPP=$SCIEZKA_DO_PLIKU_WZORCA"/"$NAZWA_PLIKU_WZORCA__HPP
+
+if (! [ -f "$MODUL_TRESCI_WYNIKU__CPP" ]) || (! [ -f "$MODUL_TRESCI_WYNIKU__HPP" ]) ; then
+    echo "*** Nie udalo sie znalezc modulu dla tresci wyniku" 1>&2
+    exit 1
+fi
+
+
+NAZWA_RDZEN=$1
+NAZWA_CPP=$NAZWA_RDZEN.cpp
+NAZWA_HPP=$NAZWA_RDZEN.hpp
+if [ -f $NAZWA_CPP ] || [ -f $NAZWA_HPP ]; then
+    echo "*** $NAZWA_CPP, $NAZWA_HPP: juz_istnieje ktorys"
+    exit 1
+fi
+
+cat $MODUL_TRESCI_WYNIKU__CPP > $NAZWA_CPP.$$
+cat $MODUL_TRESCI_WYNIKU__HPP > $NAZWA_HPP.$$
+
+ELEM_NA_PODMIANE="TUZAMIEN"
+
+sed "s/$ELEM_NA_PODMIANE/$NAZWA_RDZEN/g" $NAZWA_CPP.$$ > $NAZWA_CPP
+sed "s/$ELEM_NA_PODMIANE/$NAZWA_RDZEN/g" $NAZWA_HPP.$$ > $NAZWA_HPP
+rm $NAZWA_CPP.$$ $NAZWA_HPP.$$
+
+
+geany $NAZWA_CPP $NAZWA_HPP &

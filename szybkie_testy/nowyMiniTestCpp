@@ -1,0 +1,51 @@
+#!/bin/bash
+
+
+jak_uzywac() {
+cat 1>&2 <<EOF
+
+./`basename $0` nazwa
+
+    Skrypt generuje szkielety prostych programow C++ z funkcją main o zadanej
+    nazwie, majac za zadanie zapobiec kazdorazowemu nudnemu klepaniu ich od zera.
+
+EOF
+}
+
+juz_istnieje() {
+    echo "*** $1 juz tu istnieje. Wybierz inna nazwe." 1>&2
+}
+
+
+if [ $# -ne 1 ]; then
+    jak_uzywac
+    exit 1
+fi
+
+if [ $# -gt 0 ] && ([ $1 == "-h" ] || [ $1 == "-help" ] || [ $1 == "--help" ]); then
+    jak_uzywac; exit 1
+fi
+
+# ========================================================================================
+
+
+SCIEZKA_DO_PLIKU_WZORCA="./modele"
+
+NAZWA_PLIKU_WZORCA="model.cpp"
+MODUL_TRESCI_WYNIKU=$SCIEZKA_DO_PLIKU_WZORCA"/"$NAZWA_PLIKU_WZORCA
+if ! [ -f "$MODUL_TRESCI_WYNIKU" ]; then
+    echo "***Nie udalo sie znalezc modulu dla tresci wyniku" 1>&2
+    exit 1
+fi
+
+
+NAZWA=$1
+nowy_test=$NAZWA.cpp
+if [ -f $nowy_test ]; then
+    juz_istnieje $nowy_test
+    exit 1
+fi
+
+cat $MODUL_TRESCI_WYNIKU > $nowy_test
+
+geany $nowy_test &
