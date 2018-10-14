@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+
+CURRENT_DIR=`pwd`
+INTENDED_START_BASE="celownik"
+
+if [ `basename $CURRENT_DIR` != $INTENDED_START_BASE ]; then
+	echo "Przejdz do $INTENDED_START_BASE" 1>&2
+	exit 1
+fi
+
+SOURCES_FOLDER="src"
+SOURCES=`ls $SOURCES_FOLDER | grep \.vala$ | tr "\n" " "`
+SOURCES_C=`ls $SOURCES_FOLDER | grep \.c$ | tr "\n" " "`
+PACKAGES="--pkg gio-2.0 --pkg gee-0.8"
+EXECUTABLE="../celownik"
+
+cd $SOURCES_FOLDER
+valac $PACKAGES -o $EXECUTABLE $SOURCES $SOURCES_C

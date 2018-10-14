@@ -1,0 +1,2 @@
+#!/bin/bash
+valac --pkg gee-0.8 TEST_line_parser.vala ../src/line_parser.vala ../src/record.vala ../src/validate_date.vala

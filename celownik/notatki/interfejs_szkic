@@ -1,0 +1,4 @@
+celownik [-h | --help | -? | nierozpoznana_opcja ]	- usage
+celownik -a yyyy-mm-dd "Zrobic to a to"				- dodaje cel
+celownik -d nr										- usuwa cel
+celownik -l											- wyswietla cele
