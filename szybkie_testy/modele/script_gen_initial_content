@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# Skrypcik pomocniczy do generatorow skryptow bash porozrzucanych po systemie,
+# zapewniajacy zunifikowana tresc dla plikow bedacych wynikami dzialania ich wszystkich.
+# Po prostu doczepia ponizszy tekst do pliku podanego jako argument.
+# Zapewnia podstawowe uidiotoodpornienie i szablon opisu.
+
+# Zwraca:
+#	0 - ok
+#	1 - error: nie dostal argumentu
+#	2 - error: plik z argumentu nie istnieje lub nie jest regularny
+
+
+nie_podano_argumentu(){
+	echo "*** Nie podano argumentu. Skrypt `basename $0` przyjmuje pojedynczy argument." 1>&2
+}
+
+nie_istnieje(){
+	echo "*** Plik do edycji nie istnieje lub nie jest regularny." 1>&2
+}
+
+
+if [ $# -ne 1 ]; then
+	nie_podano_argumentu
+	exit 1
+fi
+
+NAZWA=$1
+
+if ! [ -f $NAZWA ]; then
+	nie_istnieje
+	exit 2
+fi
+
+
+
+echo -e \
+'\n
+jak_uzywac() {
+cat 1>&2 <<EOF
+
+./`basename $0` argumenty
+
+	Skrypt robiToATo.
+
+EOF
+}
+\n\n\n
+#if [ $# warunekNaArgumenty ]; then
+#	jak_uzywac
+#	exit 1
+#fi
+
+#if [ $# -gt 0 ] && ([ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]); then
+#	jak_uzywac; exit 1
+#fi
+
+
+# ========================================================================================
+\n\n\n\n' >> $NAZWA

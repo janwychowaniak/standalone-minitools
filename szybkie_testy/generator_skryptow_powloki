@@ -1,0 +1,50 @@
+#!/bin/bash
+
+jak_uzywac() {
+cat 1>&2 <<EOF
+
+./`basename $0` nazwa
+
+	Skrypt generuje szkielety mniejszych skryptow o zadanej nazwie,
+	majac za zadanie zapobiec kazdorazowemu nudnemu klepaniu ich od zera.
+
+EOF
+}
+
+juz_istnieje() {
+	echo "*** $1 juz tu istnieje. Wybierz inna nazwe." 1>&2
+}
+
+
+
+
+MODUL_TRESCI_WYNIKU="./modele/script_gen_initial_content"
+if ! [ -x "$MODUL_TRESCI_WYNIKU" ]; then
+	echo "***Nie udalo sie znalezc modulu dla tresci wyniku: $MODUL_TRESCI_WYNIKU" 1>&2
+	exit 1
+fi
+
+
+
+if [ $# -ne 1 ]; then
+	jak_uzywac
+	exit 1
+fi
+
+NAZWA=$1.sh
+if [ -a $NAZWA ]; then
+	juz_istnieje $NAZWA
+	exit 1
+fi
+
+
+
+
+echo "#!$SHELL" > $NAZWA
+
+$MODUL_TRESCI_WYNIKU $NAZWA
+
+
+
+chmod u+x $NAZWA
+geany $NAZWA &
