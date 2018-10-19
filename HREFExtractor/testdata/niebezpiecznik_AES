@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="__noscriptOpaqued__">
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta name="wpd_version" content="0.2">
+<meta name="wpd_baseurl" content="http://niebezpiecznik.pl/post/jak-dziala-aes/">
+<meta name="wpd_url" content="http://niebezpiecznik.pl/post/jak-dziala-aes/">
+<meta name="wpd_date" content="2009-10-23T20:40Z">
+
+
+
+
+<title>Niebezpiecznik.pl &raquo; Jak działa AES?</title>
+<meta name="generator" content="WordPress 2.8.6">
+
+<link rel="shortcut icon" type="image/ico" href="about:blank?favicon.gif">
+<link rel="alternate" type="application/rss+xml" title="Niebezpiecznik.pl RSS Feed" href="http://niebezpiecznik.pl/feed/">
+<link rel="pingback" href="http://niebezpiecznik.pl/xmlrpc.php">
+<script src="jquery.min.js" type="text/javascript"></script>
+<script src="basic.js" type="text/javascript"></script>
+<link rel="alternate" type="application/rss+xml" title="Niebezpiecznik.pl » Jak działa AES? Comments Feed" href="http://niebezpiecznik.pl/post/jak-dziala-aes/feed/">
+
+<script type="text/javascript" src="jquery.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://niebezpiecznik.pl/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://niebezpiecznik.pl/wp-includes/wlwmanifest.xml"> 
+
+<link rel="index" title="Niebezpiecznik.pl" href="http://niebezpiecznik.pl/">
+<link rel="start" title="Exploit na Kaspersky’ego" href="http://niebezpiecznik.pl/post/exploit-na-kasperskyego/">
+<link rel="prev" title="Magazyn (In)secure, numer 23" href="http://niebezpiecznik.pl/post/magazyn-insecure-numer-23/">
+<link rel="next" title="Astaro – bezpłatny firewall dla firm" href="http://niebezpiecznik.pl/post/astaro-bezplatny-firewall-dla-malych-firm/">
+<meta name="generator" content="WordPress 2.8.6">
+<script type="text/javascript" src="swfobject.js"></script>
+
+<link rel="stylesheet" type="text/css" href="jak-dziala-aes.css" media="all">
+</head>
+<body class="__noscriptOpaqued__">
+<script type="text/javascript">
+
+var refrr = document.referrer;
+document.write('<img width="0" height="1" src="http://niebezpiecznik.pl/666777?'+refrr+'.jpg">');
+</script>
+<div class="__noscriptOpaqued__" id="page_wrap">
+	<div id="header">
+		<div class="blog_title" style="">
+
+			<h1><a href="http://niebezpiecznik.pl/">Niebezpiecznik</a></h1>
+			<p class="description"><i>groźne rzeczy schwytane w sieci&hellip;</i></p>
+		</div>
+		
+		<div id="search">
+	<form id="searchform" action="http://niebezpiecznik.pl/" method="get">
+		<input id="searchinput" name="s" class="searchinput" value="szukaj..." onfocus="if (this.value == 'szukaj...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'szukaj...';}" type="text">
+		<input id="searchsubmit" class="button" value="" type="submit">
+	</form>
+
+</div>		
+		<div class="clear"></div>
+	</div><!-- end header -->
+	
+	<div id="main_navi">
+		<ul class="left" style="margin-left: 0px;">
+			<li></li>
+			<!-- ?php wp_list_pages('title_li=&depth=2'); ? -->
+<li class="page_item page-item-9"><a href="http://niebezpiecznik.pl/podeslij-newsa/" title="Podeślij newsa">Podeślij newsa</a></li>
+    	</ul>
+		
+		<ul class="right">
+
+<li class="page_item page-item-33"><a href="http://niebezpiecznik.pl/info/" title="Info"> Info </a></li>
+<li class="page_item"><span> | </span></li>
+<li class="page_item page-item-7"><a href="http://niebezpiecznik.pl/kontakt/" title="Kontakt"> Kontakt </a></li>
+<li class="page_item"><span> | </span></li>			
+<li class="twitter"><a href="http://twitter.com/niebezpiecznik" title="Follow me on twitter"><img src="twitter.gif" style="margin-top: 3px;"></a></li>
+<li class="page_item"><span> | </span></li>
+<li class="twitter"><a href="http://niebezpiecznik.blip.pl/" title="Śledź nas na Blipie"><img src="blip.gif" style="margin-top: 2px;"></a></li>
+
+<li class="page_item"><span> | </span></li>
+<li class="feed"><a href="http://niebezpiecznik.pl/feed/" title="Zasubskrybuj kanał RSS"> rss &nbsp;<img src="feed.gif" style="margin-top: 5px;"></a></li>
+		</ul>
+	</div><!-- end main_navi -->
+	<div class="clear"></div><div class="__noscriptOpaqued__" id="container">
+	<div id="main">
+    				<div class="post" id="post-560">
+					<div class="date">
+
+					17:01<br>
+					18/11/2009				</div>
+				<div class="title">
+					<h2><a href="http://niebezpiecznik.pl/post/jak-dziala-aes/" rel="bookmark" title="Permalink to: Jak działa AES?">Jak działa AES?</a></h2>
+				
+	
+					<div class="postmeta">
+				<a href="http://niebezpiecznik.pl/post/author/pk/" title="Posts by pk">pk</a> | 
+												Tagi:&nbsp;<span><a href="http://niebezpiecznik.pl/tag/fun/" rel="tag">fun</a>,&nbsp;<a href="http://niebezpiecznik.pl/tag/kryptografia/" rel="tag">kryptografia</a></span>&nbsp;
+
+											</div><!-- end postmeta -->
+				</div><!-- end title -->
+				<div class="clear"></div>
+				
+				<div class="entry">
+					<p>Jeff Moser stworzył komiks objaśniający zasady działania symetrycznego szyfru blokowego AES. Zapraszamy do obejrzenia 72, pełnych humoru ilustracji, kt&oacute;re na pewno wyjaśnią na czym dokładnie polega szyfrowanie AES-em: <span id="more-560"></span></p>
+<p><img src="2.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="3.jpg" alt="3" title="3" class="aligncenter size-full wp-image-562" height="353" width="500"><br>
+<img src="4.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="5.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="6.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+
+<img src="7.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="8.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="9.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="10.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="11.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="12.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="13.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="14.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="15.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="16.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="17.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="18.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="19.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="20.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="21.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="22.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="23.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+
+<img src="24.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="25.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="26.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="27.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="28.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="29.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="30.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="31.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="32.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="33.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="34.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="35.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="36.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="37.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="38.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="39.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="40.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+
+<img src="41.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="42.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="43.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="44.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="45.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="46.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="47.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="48.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="49.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="50.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="51.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="52.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="53.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="54.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="55.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="56.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="57.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+
+<img src="58.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="59.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="60.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="61.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="62.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="63.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="64.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="65.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="66.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="67.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="68.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="69.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="70.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="71.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"><br>
+<img src="72.jpg" alt="2" title="2" class="aligncenter size-full wp-image-561" height="353" width="500"></p>
+<p>Komiks mozna pobrać w formacie <a href="http://dl.dropbox.com/u/1083108/Moserware/AES/A%20Stick%20Figure%20Guide%20to%20the%20Advanced%20Encryption%20Standard%20%28AES%29.pdf">PDF</a>.<br>
+
+</p><h4>Przeczytaj także:</h4>
+<ul class="similar-posts">
+<li><a href="http://niebezpiecznik.pl/post/tajny-kod-al-kaidy-zlamany/" rel="bookmark" title="2009/11/23">Tajny kod Al-Kaidy złamany&hellip;</a></li>
+<li><a href="http://niebezpiecznik.pl/post/fotoradar-injection/" rel="bookmark" title="2009/11/01">Fotoradar injection?</a></li>
+<li><a href="http://niebezpiecznik.pl/post/strzez-pin-swojej-kobiety/" rel="bookmark" title="2009/11/12">Strzeż PIN-u swojej kobiety!</a></li>
+</ul>
+<p><!-- Similar Posts took 13.575 ms --></p>
+					
+
+
+<div class="clear"></div>
+				</div><!-- end entry -->
+			</div><!-- end post -->
+
+		
+<div class="adtaily"><script type="text/javascript" id="AdTaily_Widget" key="rqQIn80TgP4eiXc" src="widget.js"></script><noscript>Reklamy na tej stronie sprzedawane są przez widget z AdTaily.com (PLBLOADTAILY0001)</noscript><br></div>
+
+		
+<!-- You can start editing here. -->
+
+<div id="comments">
+	<h3>3 komentarzy <a href="http://niebezpiecznik.pl/post/jak-dziala-aes/feed/"><img src="feed.gif"></a></h3>
+	<span class="add_your_comment"><a href="#respond">Dodaj komentarz</a> </span>
+	<div class="clear"></div>
+
+</div>
+
+<ol class="commentlist">
+		<li class="comment even thread-even depth-1" id="li-comment-217">
+		<div id="comment-217">
+			<div class="comment-author vcard">
+				<div class="left">
+					<img alt="" src="0e0489b20d7d99f56b4368ac6f9b66f4" class="avatar avatar-48 photo" height="48" width="48">					<div class="reply">
+						
+					</div>
+				</div>
+
+			</div><!-- end vcard -->
+		
+			<div class="right">
+								
+				<div class="comment-meta commentmetadata">
+
+					Zahariash&nbsp;2009.11.18&nbsp;22:10 				</div>
+			
+				<p>Niezłe. A gdyby ktoś zapomniał wystarczy jeden rzut oka na Crib Sheet i wszystko wiadomo :P</p>
+ 
+			</div>
+
+			<div class="clear"></div>
+		</div>
+</li>
+	<li class="pingback odd alt thread-odd thread-alt depth-1" id="li-comment-220">
+		<div id="comment-220">
+			<div class="comment-author vcard">
+				<div class="left">
+										<div class="reply">
+						
+					</div>
+
+				</div>
+			</div><!-- end vcard -->
+		
+			<div class="right">
+								
+				<div class="comment-meta commentmetadata">
+					<a href="http://flaker.pl/f/3061407" rel="external nofollow" class="url">sharnik: Niebezpiecznik.pl &raquo; Jak działa AES? | flaker.pl</a>&nbsp;2009.11.19&nbsp;07:42 				</div>
+			
+				<p>[...] reklama         sharnik   przed chwilą    Niebezpiecznik.pl &raquo; Jak działa AES? niebezpiecznik.pl/post/jak-dziala-aes [...]</p>
+
+ 
+			</div>
+			<div class="clear"></div>
+		</div>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-221">
+		<div id="comment-221">
+			<div class="comment-author vcard">
+				<div class="left">
+					<img alt="" src="72b395f7a018a2ab02878ac61c3292f9" class="avatar avatar-48 photo" height="48" width="48">					<div class="reply">
+
+						
+					</div>
+				</div>
+			</div><!-- end vcard -->
+		
+			<div class="right">
+								
+				<div class="comment-meta commentmetadata">
+
+					Michał&nbsp;2009.11.19&nbsp;09:05 				</div>
+			
+				<p>ciekawe kiedy ktos zrobi polska wersje :)</p>
+
+ 
+			</div>
+			<div class="clear"></div>
+		</div>
+</li>
+</ol>
+
+<!--paged comment goes here-->
+<div class="comments_navi">
+	<div class="alignleft"></div>
+	<div class="alignright"></div>
+	<div class="clear"></div>
+
+</div>
+
+
+
+
+<div id="respond">
+
+<div class="h3_cancel_reply">
+	<h3>Tw&oacute;j komentarz</h3>
+	<span class="cancel-comment-reply"><a rel="nofollow" id="cancel-comment-reply-link" href="http://niebezpiecznik.pl/post/jak-dziala-aes/#respond" style="display: none;">Kliknij tu, aby anulować</a></span>
+	<div class="clear"></div>
+
+</div>
+
+
+<form action="http://niebezpiecznik.pl/wp-comments-post.php" method="post" id="commentform">
+
+
+<div class="user_info">
+	<div class="single_field">
+		<label for="author" class="desc">Imię<abbr title="Required">*</abbr> :</label>
+		<input name="author" id="author" value="" size="22" tabindex="2" class="comment_input" aria-required="true" type="text">
+
+	</div>
+	
+	<div class="single_field">
+		<label for="email" class="desc">Email<abbr title="Required, would not be published">*</abbr> :</label>
+		<input name="email" id="email" value="" size="22" tabindex="3" class="comment_input" aria-required="true" type="text">
+	</div>
+
+	<div class="single_field">
+
+		<label for="url" class="desc">URL :</label>
+		<input name="url" id="url" value="" size="22" tabindex="4" class="comment_input" type="text">
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div class="input_area"><textarea name="comment" id="comment" cols="60" rows="5" tabindex="1" class="message_input" onkeydown="if((event.ctrlKey&&event.keyCode==13)){document.getElementById('submit').click();return false};"></textarea><p style="margin-bottom: -25px;"> <small>Przez moderację nie przejdą: wycieczki osobiste, komentarze nie na temat, wulgaryzmy.</small></p></div>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<div class="submit_button">
+	<input name="submit" id="submit" tabindex="5" value="Dodaj" class="button" style="" type="submit">
+	<input name="comment_post_ID" value="560" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+	
+
+        <p style="clear: both;" class="subscribe-to-comments">
+        <input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox">
+        <label for="subscribe">Informuj mnie o nowych komentarzach pod tym postem (via e-mail)</label>
+        </p>
+
+
+	<div class="clear"></div>
+</div>
+
+</form>
+
+</div>
+
+				
+		 
+	</div><!-- end main --> 
+<div class="__noscriptOpaqued__" id="sidebar">
+	
+	<ul class="__noscriptOpaqued__">
+		<li id="text-3" class="widget widget_text"><h2 class="widgettitle">Newsletter & RSS</h2>
+
+			<div class="textwidget"><form style="border: medium none ; text-align: center;" action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=niebezpiecznik', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Aby otrzymywać powiadomienia o nowych postach, wpisz sw&oacute;j e-mail:</p><p><input style="width: 140px;" name="email" type="text"> <input value="niebezpiecznik" name="uri" type="hidden"> <input name="loc" value="en_US" type="hidden"> <input value=" OK! " style="cursor: pointer;" type="submit"></p><p><small> </small></p></form>
+<p style="text-align: center;">lub dodaj nas do czytnika RSS: <br><br> <a href="http://feeds.feedburner.com/niebezpiecznik/"><img src="rss.png"></a> <span style="display: none;"><a href="http://twitter.com/niebezpiecznik"><img src="twitter.png"></a> <a href="http://www.facebook.com/pages/Niebezpiecznik/176141556820"><img src="facebook_32.png"></a></span></p>
+
+</div>
+		</li>
+
+<li id="text-5" class="widget widget_text __noscriptOpaqued__">			<div class="textwidget __noscriptOpaqued__"><div class="__noscriptOpaqued__" style="margin-top: -10px; margin-left: -10px;"><a style="border-width: 0px; margin: 0px; padding: 0px; outline-offset: -1px; display: inline;" class="__noscriptPlaceholder__" title="&lt;OBJECT&gt;, shockwave-flash@http://blip.pl/widget.swf#!flashvars#blip_user=niebezpiecznik&color_scheme=dark&corner_radius=0&" href="http://blip.pl/widget.swf#%21flashvars#blip_user=niebezpiecznik&color_scheme=dark&corner_radius=0&" id=""><div style="border: 0px none rgb(170, 170, 170); margin: 0px; padding: 0px; background: transparent none repeat ; 0%; overflow: visible; marker: none; border-collapse: separate; border-spacing: 0px; bottom: auto; caption-side: top; clear: none; clip: rect(auto, auto, auto, auto); color: rgb(170, 170, 170); content: none; counter-increment: none; counter-reset: none; cursor: auto; direction: ltr; display: inline; empty-cells: show; float: none; font-family: &quot;Lucida Grande&quot;,Verdana,Helvetica,Arial,Sans-Serif; font-size: 12px; font-size-adjust: none; font-style: normal; font-variant: normal; font-weight: 400; height: 250px; left: auto; letter-spacing: normal; line-height: 16px; list-style-image: none; list-style-position: outside; list-style-type: none; marker-offset: auto; max-height: none; max-width: none; min-height: 0px; min-width: 0px; ime-mode: auto; opacity: 1; outline-color: rgb(0, 0, 0); outline-style: none; outline-width: 0px; outline-offset: 0px; page-break-after: auto; page-break-before: auto; position: static; quotes: &quot;“&quot; &quot;”&quot; &quot;‘&quot; &quot;’&quot;; right: auto; table-layout: auto; text-align: start; text-decoration: none; text-indent: 0px; text-transform: none; top: auto; unicode-bidi: normal; vertical-align: baseline; visibility: visible; white-space: normal; width: 260px; word-spacing: normal; z-index: auto; -moz-appearance: none; -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; -moz-binding: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-right-colors: none; -moz-border-top-colors: none; -moz-border-radius-bottomleft: 0px; -moz-border-radius-bottomright: 0px; -moz-border-radius-topleft: 0px; -moz-border-radius-topright: 0px; -moz-box-align: stretch; -moz-box-direction: normal; -moz-box-flex: 0; -moz-box-ordinal-group: 1; -moz-box-orient: horizontal; -moz-box-pack: start; -moz-box-sizing: content-box; -moz-column-count: auto; -moz-column-width: auto; -moz-column-gap: 12px; -moz-float-edge: content-box; -moz-force-broken-image-icon: 0; -moz-image-region: rect(auto, auto, auto, auto); -moz-outline-radius-bottomleft: 0px; -moz-outline-radius-bottomright: 0px; -moz-outline-radius-topleft: 0px; -moz-outline-radius-topright: 0px; -moz-user-focus: none; -moz-user-input: auto; -moz-user-modify: read-only; clip-path: none; clip-rule: nonzero; color-interpolation: srgb; color-interpolation-filters: linearrgb; dominant-baseline: auto; fill: rgb(0, 0, 0); fill-opacity: 1; fill-rule: nonzero; filter: none; flood-color: rgb(0, 0, 0); flood-opacity: 1; lighting-color: rgb(255, 255, 255); mask: none; pointer-events: visiblepainted; shape-rendering: auto; stop-color: rgb(0, 0, 0); stop-opacity: 1; stroke: none; stroke-dasharray: none; stroke-dashoffset: 0px; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-opacity: 1; stroke-width: 1px; text-anchor: start; text-rendering: auto;" class="__noscriptPlaceholder__1"><div style="background-position: center center; background-image: url(flash32.png);" class="__noscriptPlaceholder__2"></div></div></a></div></div>
+		</li>
+<li id="tag_cloud-3" class="widget widget_tag_cloud"><h2 class="widgettitle">Tagi</h2>
+<div><a href="http://niebezpiecznik.pl/tag/0day/" class="tag-link-71" title="4 topics" rel="tag" style="font-size: 11pt;">0day</a>
+<a href="http://niebezpiecznik.pl/tag/abw/" class="tag-link-91" title="1 topic" rel="tag" style="font-size: 8pt;">ABW</a>
+<a href="http://niebezpiecznik.pl/tag/antywirus/" class="tag-link-54" title="4 topics" rel="tag" style="font-size: 11pt;">antywirus</a>
+<a href="http://niebezpiecznik.pl/tag/apple/" class="tag-link-37" title="2 topics" rel="tag" style="font-size: 9pt;">Apple</a>
+<a href="http://niebezpiecznik.pl/tag/atak/" class="tag-link-29" title="15 topics" rel="tag" style="font-size: 22pt;">atak</a>
+<a href="http://niebezpiecznik.pl/tag/botnet/" class="tag-link-100" title="1 topic" rel="tag" style="font-size: 8pt;">Botnet</a>
+
+<a href="http://niebezpiecznik.pl/tag/cert/" class="tag-link-90" title="1 topic" rel="tag" style="font-size: 8pt;">CERT</a>
+<a href="http://niebezpiecznik.pl/tag/chmura/" class="tag-link-97" title="2 topics" rel="tag" style="font-size: 9pt;">chmura</a>
+<a href="http://niebezpiecznik.pl/tag/confidence/" class="tag-link-104" title="1 topic" rel="tag" style="font-size: 8pt;">confidence</a>
+<a href="http://niebezpiecznik.pl/tag/ddos/" class="tag-link-99" title="1 topic" rel="tag" style="font-size: 8pt;">DDoS</a>
+<a href="http://niebezpiecznik.pl/tag/dos/" class="tag-link-73" title="1 topic" rel="tag" style="font-size: 8pt;">DoS</a>
+<a href="http://niebezpiecznik.pl/tag/exploit/" class="tag-link-50" title="4 topics" rel="tag" style="font-size: 11pt;">exploit</a>
+<a href="http://niebezpiecznik.pl/tag/facebook/" class="tag-link-108" title="1 topic" rel="tag" style="font-size: 8pt;">Facebook</a>
+<a href="http://niebezpiecznik.pl/tag/forensic/" class="tag-link-80" title="2 topics" rel="tag" style="font-size: 9pt;">forensic</a>
+<a href="http://niebezpiecznik.pl/tag/ftp/" class="tag-link-56" title="1 topic" rel="tag" style="font-size: 8pt;">FTP</a>
+
+<a href="http://niebezpiecznik.pl/tag/fun/" class="tag-link-82" title="3 topics" rel="tag" style="font-size: 10pt;">fun</a>
+<a href="http://niebezpiecznik.pl/tag/google/" class="tag-link-101" title="1 topic" rel="tag" style="font-size: 8pt;">Google</a>
+<a href="http://niebezpiecznik.pl/tag/gps/" class="tag-link-105" title="1 topic" rel="tag" style="font-size: 8pt;">GPS</a>
+<a href="http://niebezpiecznik.pl/tag/gsm/" class="tag-link-75" title="3 topics" rel="tag" style="font-size: 10pt;">GSM</a>
+<a href="http://niebezpiecznik.pl/tag/hardware/" class="tag-link-83" title="1 topic" rel="tag" style="font-size: 8pt;">hardware</a>
+<a href="http://niebezpiecznik.pl/tag/hasla/" class="tag-link-77" title="4 topics" rel="tag" style="font-size: 11pt;">hasła</a>
+<a href="http://niebezpiecznik.pl/tag/iis/" class="tag-link-55" title="1 topic" rel="tag" style="font-size: 8pt;">IIS</a>
+<a href="http://niebezpiecznik.pl/tag/internet/" class="tag-link-107" title="1 topic" rel="tag" style="font-size: 8pt;">internet</a>
+<a href="http://niebezpiecznik.pl/tag/iphone/" class="tag-link-76" title="4 topics" rel="tag" style="font-size: 11pt;">iPhone</a>
+
+<a href="http://niebezpiecznik.pl/tag/kaspersky/" class="tag-link-51" title="1 topic" rel="tag" style="font-size: 8pt;">Kaspersky</a>
+<a href="http://niebezpiecznik.pl/tag/konferencja/" class="tag-link-98" title="1 topic" rel="tag" style="font-size: 8pt;">konferencje</a>
+<a href="http://niebezpiecznik.pl/tag/konkurs/" class="tag-link-87" title="2 topics" rel="tag" style="font-size: 9pt;">konkurs</a>
+<a href="http://niebezpiecznik.pl/tag/kryptografia/" class="tag-link-117" title="2 topics" rel="tag" style="font-size: 9pt;">kryptografia</a>
+<a href="http://niebezpiecznik.pl/tag/lifehacking/" class="tag-link-93" title="1 topic" rel="tag" style="font-size: 8pt;">lifehacking</a>
+<a href="http://niebezpiecznik.pl/tag/malware/" class="tag-link-31" title="5 topics" rel="tag" style="font-size: 12pt;">malware</a>
+<a href="http://niebezpiecznik.pl/tag/microsoft/" class="tag-link-38" title="5 topics" rel="tag" style="font-size: 12pt;">Microsoft</a>
+<a href="http://niebezpiecznik.pl/tag/niebezpiecznik/" class="tag-link-81" title="4 topics" rel="tag" style="font-size: 11pt;">niebezpiecznik</a>
+<a href="http://niebezpiecznik.pl/tag/ochrona/" class="tag-link-30" title="11 topics" rel="tag" style="font-size: 18pt;">ochrona</a>
+
+<a href="http://niebezpiecznik.pl/tag/opera/" class="tag-link-106" title="1 topic" rel="tag" style="font-size: 8pt;">Opera</a>
+<a href="http://niebezpiecznik.pl/tag/programy/" class="tag-link-79" title="2 topics" rel="tag" style="font-size: 9pt;">programy</a>
+<a href="http://niebezpiecznik.pl/tag/prywatnosc/" class="tag-link-102" title="2 topics" rel="tag" style="font-size: 9pt;">prywatność</a>
+<a href="http://niebezpiecznik.pl/tag/raport/" class="tag-link-92" title="1 topic" rel="tag" style="font-size: 8pt;">raport</a>
+<a href="http://niebezpiecznik.pl/tag/remote/" class="tag-link-72" title="3 topics" rel="tag" style="font-size: 10pt;">remote</a>
+<a href="http://niebezpiecznik.pl/tag/samba/" class="tag-link-74" title="1 topic" rel="tag" style="font-size: 8pt;">samba</a>
+<a href="http://niebezpiecznik.pl/tag/sms/" class="tag-link-88" title="1 topic" rel="tag" style="font-size: 8pt;">SMS</a>
+<a href="http://niebezpiecznik.pl/tag/spoofing/" class="tag-link-89" title="1 topic" rel="tag" style="font-size: 8pt;">spoofing</a>
+<a href="http://niebezpiecznik.pl/tag/sql/" class="tag-link-84" title="1 topic" rel="tag" style="font-size: 8pt;">SQL</a>
+
+<a href="http://niebezpiecznik.pl/tag/twitter/" class="tag-link-103" title="1 topic" rel="tag" style="font-size: 8pt;">Twitter</a>
+<a href="http://niebezpiecznik.pl/tag/video/" class="tag-link-95" title="2 topics" rel="tag" style="font-size: 9pt;">Video</a>
+<a href="http://niebezpiecznik.pl/tag/windows/" class="tag-link-35" title="6 topics" rel="tag" style="font-size: 13pt;">Windows</a></div>
+</li>
+		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">Najnowsze wpisy</h2>
+		<ul>
+				<li><a href="http://niebezpiecznik.pl/post/pierwszy-robak-na-iphonea/" title="Pierwszy robak na iPhone’a">Pierwszy robak na iPhone&rsquo;a </a></li>
+
+				<li><a href="http://niebezpiecznik.pl/post/internet-explorer-6-i-7-podatne-na-atak/" title="Internet Explorer 6 i 7 podatne na atak!">Internet Explorer 6 i 7 podatne na atak! </a></li>
+				<li><a href="http://niebezpiecznik.pl/post/tajny-kod-al-kaidy-zlamany/" title="Tajny kod Al-Kaidy złamany…">Tajny kod Al-Kaidy złamany&hellip; </a></li>
+				<li><a href="http://niebezpiecznik.pl/post/zmien-kamerke-internetowa-w-system-monitoringu/" title="Zmień kamerkę internetową w system monitoringu">Zmień kamerkę internetową w system monitoringu </a></li>
+				<li><a href="http://niebezpiecznik.pl/post/jak-dziala-aes/" title="Jak działa AES?">Jak działa AES? </a></li>
+				</ul>
+		</li>
+
+<li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">Archiwum</h2>
+		<ul>
+			<li><a href="http://niebezpiecznik.pl/post/2009/11/" title="November 2009">November 2009</a>&nbsp;(30)</li>
+	<li><a href="http://niebezpiecznik.pl/post/2009/10/" title="October 2009">October 2009</a>&nbsp;(2)</li>
+	<li><a href="http://niebezpiecznik.pl/post/2009/09/" title="September 2009">September 2009</a>&nbsp;(4)</li>
+	<li><a href="http://niebezpiecznik.pl/post/2009/08/" title="August 2009">August 2009</a>&nbsp;(1)</li>
+
+		</ul>
+</li>
+<li id="rss-3" class="widget widget_rss"><h2 class="widgettitle">Prasownica</h2>
+<div style="margin-left: 25px; margin-right: 25px; margin-bottom: 5px;"><i><small>...czyli informacje prasowe nadesłane do nas poprzez <a style="border-bottom: 1px dotted;" href="http://niebezpiecznik.pl/kontakt/">formularz kontaktowy</a> :)</small></i></div><ul><li><a class="rsswidget" href="http://niebezpiecznik.pl/post/panda-cloud-antivirus-bezplata-ochrona-komputerow/" title="Poniższa wiadomość to informacja prasowa nadesłana do Niebezpiecznika poprzez formularz kontaktowy. Nie pojawia się ona na głównej stronie vortalu ani w kanale RSS. Została opublikowana w dziale Prasownica, ponieważ&nbsp;jedną z misji Niebezpiecznika jest wspieranie polskich firm z branży IT Security poprzez publikowanie ich oferty handlowej. Redakcja Niebezpiecz […]">Panda Cloud Antivirus &ndash; bezpłata ochrona komputer&oacute;w</a></li><li><a class="rsswidget" href="http://niebezpiecznik.pl/post/astaro-bezplatny-firewall-dla-malych-firm/" title="Poniższa wiadomość to informacja prasowa nadesłana do Niebezpiecznika poprzez formularz kontaktowy. Nie pojawia się ona na głównej stronie ani w RSS. Została opublikowana w dziale Prasownica, ponieważ&nbsp;jedną z misji Niebezpiecznika jest wspieranie polskich firm z branży bezpieczeństwa IT poprzez publikowanie ich oferty handlowej. Redakcja Niebezpiecznika może […]">Astaro &ndash; bezpłatny firewall dla firm</a></li></ul><div style="text-align: right; margin-top: 5px; margin-bottom: 5px; margin-right: 5px;"><a href="http://niebezpiecznik.pl/category/prasownica" style="border-bottom: 1px dotted;">zobacz wszystkie</a></div><div style="height: 5px;">&nbsp;</div></li>
+
+<li id="linkcat-2" class="widget widget_links"><h2 class="widgettitle">Polecamy</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://bothunters.pl/" target="_top">Borys Łącki</a></li>
+<li><a href="http://gynvael.coldwind.pl/" target="_top">Gynvael Coldwind</a></li>
+<li><a href="http://pentester.jogger.pl/" target="_top">Michał Melewski</a></li>
+<li><a href="http://wampir.mroczna-zaloga.org/" target="_top">Paweł Goleń</a></li>
+<li><a href="http://ipsec.pl/" target="_top">Paweł Krawczyk</a></li>
+<li><a href="http://blog.konieczny.be/" title="Blog Piotra Konieczny" target="_top">Piotr Konieczny</a></li>
+
+<li><a href="http://blog.codeninja.pl/" target="_top">Przemysław Skowron</a></li>
+
+	</ul>
+</li>
+
+	</ul><!-- end ul -->
+</div><!-- end sidebar --></div><!-- end container -->
+<div class="clear"></div>
+</div><!-- end page_wrap -->
+<div id="footer">
+	<div class="footer_wrapper">
+
+2009 &copy;&nbsp;Niebezpiecznik.pl | <a href="http://niebezpiecznik.pl/kontakt/">Kontakt</a>
+
+	</div>
+</div><!-- end footer -->
+
+<script type="text/javascript" src="jquery.form.js"></script>
+<script type="text/javascript" src="contact-form-7.js"></script>
+
+<script type="text/javascript">
+
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+
+try {
+var pageTracker = _gat._getTracker("UA-164903-10");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<div style="border: 0px solid rgb(255, 0, 0) ! important; margin: 0pt ! important; padding: 0pt ! important; background: transparent none repeat scroll center center ! important; overflow: visible ! important; float: none ! important; -moz-background-clip: -moz-initial ! important; -moz-background-origin: -moz-initial ! important; -moz-background-inline-policy: -moz-initial ! important; width: auto ! important; height: auto ! important; display: block ! important; position: static ! important; text-indent: 0px ! important; z-index: auto ! important; max-width: none ! important; min-width: 0pt ! important; max-height: none ! important; min-height: 0pt ! important; left: auto ! important; top: auto ! important; bottom: auto ! important; right: auto ! important; line-height: 16px ! important; white-space: nowrap ! important;" class="linkscent-iconblock"><img clueid="favIcon" src="pixel.gif" style="border: 0px solid rgb(255, 0, 0) ! important; margin: 0pt; padding: 0pt ! important; background: transparent url(linkscentexternaltiny.png) no-repeat scroll center center ! important; overflow: visible ! important; float: none ! important; width: 10px ! important; height: 10px ! important; display: none; position: absolute ! important; text-indent: 0px ! important; z-index: 2147483635 ! important; max-width: none ! important; min-width: 0pt ! important; max-height: none ! important; min-height: 0pt ! important; left: 1109px; top: 667px; bottom: auto ! important; right: auto ! important; line-height: 16px ! important; white-space: nowrap ! important; visibility: hidden; -moz-background-clip: -moz-initial ! important; -moz-background-origin: -moz-initial ! important; -moz-background-inline-policy: -moz-initial ! important; opacity: 0;" class="linkscent-icon"><img src="pixel.gif" clueid="anchorExternal" style="border: 0px solid rgb(255, 0, 0) ! important; margin: 0pt; padding: 0pt ! important; background: transparent url(spritestiny.png) no-repeat scroll -20px -40px; overflow: visible ! important; float: none ! important; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 10px ! important; height: 10px ! important; display: none; position: absolute ! important; text-indent: 0px ! important; z-index: 2147483635 ! important; max-width: none ! important; min-width: 0pt ! important; max-height: none ! important; min-height: 0pt ! important; left: 1121px; top: 667px; bottom: auto ! important; right: auto ! important; line-height: 16px ! important; white-space: nowrap ! important; visibility: hidden; opacity: 0;" class="linkscent-icon" height="10" width="10"><img clueid="clueIcon" src="pixel.gif" style="border: 0px solid rgb(255, 0, 0) ! important; margin: 0pt; padding: 0pt ! important; background: transparent none repeat scroll center center; overflow: visible ! important; float: none ! important; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 10px ! important; height: 10px ! important; display: none; position: absolute ! important; text-indent: 0px ! important; z-index: 2147483635 ! important; max-width: none ! important; min-width: 0pt ! important; max-height: none ! important; min-height: 0pt ! important; left: 1133px; top: 667px; bottom: auto ! important; right: auto ! important; line-height: 16px ! important; white-space: nowrap ! important; visibility: hidden; opacity: 0;" class="linkscent-icon"><img clueid="favIcon" src="pixel.gif" style="border: 0px solid rgb(255, 0, 0) ! important; margin: 0pt; padding: 0pt ! important; background: transparent url(linkscentdefaulttiny.png) no-repeat scroll center center ! important; overflow: visible ! important; float: none ! important; width: 10px ! important; height: 10px ! important; display: block; position: absolute ! important; text-indent: 0px ! important; z-index: 2147483635 ! important; max-width: none ! important; min-width: 0pt ! important; max-height: none ! important; min-height: 0pt ! important; left: 402px; top: 267px; bottom: auto ! important; right: auto ! important; line-height: 16px ! important; white-space: nowrap ! important; visibility: visible; -moz-background-clip: -moz-initial ! important; -moz-background-origin: -moz-initial ! important; -moz-background-inline-policy: -moz-initial ! important; opacity: 0.5;" class="linkscent-icon"><img clueid="clueIcon" src="pixel.gif" style="border: 0px solid rgb(255, 0, 0) ! important; margin: 0pt; padding: 0pt ! important; background: transparent none repeat scroll center center; overflow: visible ! important; float: none ! important; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 10px ! important; height: 10px ! important; display: none; position: absolute ! important; text-indent: 0px ! important; z-index: 2147483635 ! important; max-width: none ! important; min-width: 0pt ! important; max-height: none ! important; min-height: 0pt ! important; left: 414px; top: 267px; bottom: auto ! important; right: auto ! important; line-height: 16px ! important; white-space: nowrap ! important; visibility: hidden;" class="linkscent-icon"></div><iframe src="jak-dziala-aes_1.html" class="clueframe" style="border: 0px solid rgb(255, 0, 0) ! important; margin: 0pt ! important; padding: 0pt ! important; background: transparent none repeat scroll center center ! important; overflow: visible ! important; float: none ! important; -moz-background-clip: -moz-initial ! important; -moz-background-origin: -moz-initial ! important; -moz-background-inline-policy: -moz-initial ! important; width: 771px; height: 610px; display: none; position: fixed; text-indent: 0px ! important; z-index: 2147483637 ! important; max-width: none ! important; min-width: 0pt ! important; max-height: none ! important; min-height: 0pt ! important; left: -2000px; top: -2000px; bottom: auto ! important; right: auto ! important; line-height: 16px ! important; white-space: nowrap ! important;" name="ClueFrame" id="ClueFrame" frameborder="0" scrolling="no"></iframe><object style="border: 0px solid rgb(255, 0, 0) ! important; margin: 0pt ! important; padding: 0pt ! important; background: transparent none repeat scroll center center ! important; overflow: visible ! important; float: none ! important; -moz-background-clip: -moz-initial ! important; -moz-background-origin: -moz-initial ! important; -moz-background-inline-policy: -moz-initial ! important; width: 0px ! important; height: 0px ! important; display: block ! important; position: absolute ! important; text-indent: 0px ! important; z-index: auto ! important; max-width: none ! important; min-width: 0pt ! important; max-height: none ! important; min-height: 0pt ! important; left: 0px ! important; top: 0px ! important; bottom: auto ! important; right: auto ! important; line-height: 16px ! important; white-space: nowrap ! important; visibility: hidden ! important;"></object></body>
+</html>
+
+

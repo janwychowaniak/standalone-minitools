@@ -1,0 +1,31 @@
+
+CLI: java -jar HREFExtractor.jar [ -z "zawiera to" [ -n "nie zawiera tego"]] zrodlo [ -o outputFile]
+
+Inputy testowe CLI:
+zrodlo
+-z "zawiera to" zrodlo
+-n "nie zawiera tego" zrodlo
+zrodlo -o outputFile
+-n "nie zawiera tego" zrodlo -o outputFile
+-z "zawiera to" zrodlo -o outputFile
+-z "zawiera to" -n "nie zawiera tego" zrodlo
+-z "zawiera to" -n "nie zawiera tego" zrodlo -o outputFile
+
+
+"zrodlo"
+"-z", "zawiera to", "zrodlo"
+"-n", "nie zawiera tego", "zrodlo"
+"zrodlo", "-o", "outputFile"
+"-n", "nie zawiera tego", "zrodlo", "-o", "outputFile"
+"-z", "zawiera to", "zrodlo", "-o", "outputFile"
+"-z", "zawiera to", "-n", "nie zawiera tego", "zrodlo"
+"-z", "zawiera to", "-n", "nie zawiera tego", "zrodlo", "-o", "outputFile"
+
+
+Zlosliwe inputy testowe CLI:
+""									(pusty input)
+"-z", "zawiera to", "-n", "nie zawiera tego", "-o", "outputFile"	(brak zrodla)
+"-z", "-n", "nie zawiera tego", "zrodlo"				(brak tresci kontrolki)
+"-n", "nie zawiera tego", "zrodlo", "-o"				(brak tresci kontrolki - kontrolka na koncu)
+"-n", "nie zawiera tego", "zrodlo", "zrodlo2", "-o", "outputFile"	(kilka zrodel)
+"-z", "zawiera to", "-byk", "nie zawiera tego", "zrodlo"		(nieznana kontrolka)
