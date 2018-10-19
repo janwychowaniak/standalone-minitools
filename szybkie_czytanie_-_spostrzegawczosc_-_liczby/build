@@ -1,0 +1,2 @@
+#!/bin/bash
+valac --pkg gee-0.8 liczby_osobno_main.vala integer_rand.vala grupowacz.vala listy_wynikowe.vala -o liczby_osobno
