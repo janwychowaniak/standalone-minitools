@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+DICT_FILE_PATTERN=`cat scripts_parameter_dict_file_pattern`
+UPPER_LIMIT=`cat scripts_parameter_upper_limit`
+
+
+for dict_file in `ls .. | grep $DICT_FILE_PATTERN`; do
+	rm ../$dict_file
+done
+
+for index in `seq 3 $UPPER_LIMIT`; do
+	echo -n > ../$DICT_FILE_PATTERN$index
+done

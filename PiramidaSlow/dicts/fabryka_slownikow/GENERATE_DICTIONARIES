@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+# W zasadzie nie wypada dawac wiecej, niz 80, tak z buta na sucho.
+# Jezeli jest taka potrzeba, nalezy przedtem przegenerowac regexy. Nie dzieje sie ta ostatnia czynnosc automatycznie.
+
+
+PHRASE_BANK_FILE_PATTERN=bank_fraz_-_
+
+./reset_dicts
+echo -n "."
+for bank in `ls | grep $PHRASE_BANK_FILE_PATTERN`; do
+	./sorter_for_words $bank
+	echo -n "."
+done
+
+echo "Done!"

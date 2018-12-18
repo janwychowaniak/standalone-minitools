@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+SOURCE_FILE=$1
+REGEX_FILE_PATTERN=`cat scripts_parameter_regex_file_pattern`
+DICT_FILE_PATTERN=`cat scripts_parameter_dict_file_pattern`
+UPPER_LIMIT=`cat scripts_parameter_upper_limit`
+
+for index in `seq 3 $UPPER_LIMIT`; do
+	cat "$SOURCE_FILE" | grep "`cat $REGEX_FILE_PATTERN$index`" >> ../$DICT_FILE_PATTERN$index
+done

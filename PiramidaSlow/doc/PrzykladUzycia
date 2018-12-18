@@ -1,0 +1,35 @@
+#!/bin/bash
+
+
+jak_uzywac() {
+cat 1>&2 <<EOF
+
+./`basename $0` LOWER_BOUNDARY UPPER_BOUNDARY SPREAD
+
+	Skrypt generuje piramide do cwiczen dla poszerzania widzenia peryferyjego.
+
+EOF
+}
+
+
+
+
+if [ $# -eq 0 ]; then
+	jak_uzywac
+	exit 1
+fi
+
+if [ $# -gt 0 ] && ([ $1 == "-h" ] || [ $1 == "-help" ] || [ $1 == "--help" ]); then
+	jak_uzywac; exit 1
+fi
+
+
+APP_PATH="/home/jan/eclipse_workspace/PiramidaSlow/jar/PiramidaSlow.jar"
+DICT_PATH="/home/jan/eclipse_workspace/PiramidaSlow/dicts"
+
+if ! [ -a $APP_PATH ]; then
+	echo "***Nie udalo sie znalezc $APP_PATH" 1>&2
+	exit 1
+fi
+
+java -jar $APP_PATH $1 $2 $3 $DICT_PATH

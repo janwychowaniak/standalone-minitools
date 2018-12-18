@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+REGEX_FILE_PATTERN=`cat scripts_parameter_regex_file_pattern`
+SINGLE_CHAR_REGEX_FILE=single_char_regex
+LINE_START='^'
+LINE_END='$'
+UPPER_LIMIT=`cat scripts_parameter_upper_limit`
+
+
+for index in `seq 3 $UPPER_LIMIT`; do
+	echo -n $LINE_START > $REGEX_FILE_PATTERN$index
+	for baseregmul in `seq 1 $index`; do
+		echo -n `cat $SINGLE_CHAR_REGEX_FILE` >> $REGEX_FILE_PATTERN$index
+	done
+	echo $LINE_END >> $REGEX_FILE_PATTERN$index
+done
