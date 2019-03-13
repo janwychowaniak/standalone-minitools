@@ -62,7 +62,7 @@ def main():
     prepended_dict = update_dict(file_modtime_dict)
 
     for i in prepended_dict:
-        print 'mv', i, prepended_dict[i]
+        print 'mv', i, prepended_dict[i], ';'
 
     print
 
