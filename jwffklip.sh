@@ -12,6 +12,11 @@ cat 1>&2 <<EOF
     popedzajac go jednoczesnie na zadane TEMPO
     pakujac rezultat do ./, ew. do OUTPUT_DIR
 
+    Use JWFFKLIPARGSV and JWFFKLIPARGSA env vars for
+    passing additional processing parameters:
+    $ export JWFFKLIPARGSV="..."
+    $ export JWFFKLIPARGSA="..."
+
 EOF
 }
 
@@ -68,7 +73,7 @@ atempo=$(get_atempo $TEMPO)
 vtempo=$(get_vtempo $TEMPO)
 
 nazwa_in=$(echo $NAZWA_KLIPU)
-nazwa_inter=$(echo $$.avi)
+nazwa_inter=$(echo $RANDOM.avi)
 nazwa_out=$(get_nazwa_out $NAZWA_KLIPU $OUTPUT_DIR)
 
 #~ echo "atempo      = $atempo"
@@ -79,13 +84,8 @@ nazwa_out=$(get_nazwa_out $NAZWA_KLIPU $OUTPUT_DIR)
 
 
 # step 1
-echo -n "step1: $nazwa_in -> $nazwa_inter ... "
-ffmpeg -loglevel error -i $nazwa_in -filter_complex "[0:v]setpts=$vtempo*PTS[v];[0:a]atempo=$atempo[a]" -map "[v]" -map "[a]" -q:v 0 -q:a 0 $nazwa_inter
-echo "done"
-sleep 1
+echo "ffmpeg -i $nazwa_in -filter_complex \"[0:v]setpts=$vtempo*PTS[v];[0:a]atempo=$atempo[a]\" -map \"[v]\" -map \"[a]\" -q:v 0 $JWFFKLIPARGSV -q:a 0 $JWFFKLIPARGSA $nazwa_inter ;"
 # step 2
-echo -n "step2: $nazwa_inter -> $nazwa_out ... "
-ffmpeg -loglevel error -i $nazwa_inter -c:v libx264 -preset veryfast -crf 26 -c:a aac -b:a 64k -ac 1 -sn -strict experimental $nazwa_out
-echo "done"
+echo "ffmpeg -i $nazwa_inter -c:v libx264 -preset veryfast -crf 26 -c:a aac -b:a 64k -ac 1 -sn -strict experimental $nazwa_out ;"
 # cleanup
-rm $nazwa_inter
+echo "rm $nazwa_inter ;"
