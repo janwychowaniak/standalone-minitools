@@ -84,7 +84,8 @@ def set_mp3_with_id3v2(content):
 
     commands = []
     for t in content:
-        commands.append('id3v2 -a "%s" -A "%s" -T %d -t "%s" %s' % (t[0], t[1], t[2], t[3], t[4]))
+        commands.append('id3v2 -a "{}" -A "{}" -T {} -t "{}" {}'
+            .format(t[0], t[1], t[2], t[3], t[4]))
     return commands
 
 
@@ -92,7 +93,8 @@ def set_ogg_with_vorbiscomment(content):
 
     commands = []
     for t in content:
-        commands.append('vorbiscomment -w %s -t "ARTIST=%s" -t "ALBUM=%s" -t "TRACKNUMBER=%d" -t "TITLE=%s"' % (t[4], t[0], t[1], t[2], t[3]))
+        commands.append('vorbiscomment -w {} -t "ARTIST={}" -t "ALBUM={}" -t "TRACKNUMBER={}" -t "TITLE={}"'
+            .format(t[4], t[0], t[1], t[2], t[3]))
     return commands
 
 
@@ -145,5 +147,5 @@ if __name__ == '__main__':
         for cmd in set_ogg_with_vorbiscomment(content): print cmd
         print
     else:
-        print 'Nie jest to "mp3" ani "ogg"'
+        print ' *** The filetype given is neither "mp3" nor "ogg"'
 
