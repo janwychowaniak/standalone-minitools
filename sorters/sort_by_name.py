@@ -1,8 +1,6 @@
 #!/usr/bin/python
 
 
-
-
 import sys
 import os
 
@@ -11,6 +9,23 @@ import glob
 
 COUNTER_STR_WIDTH = 5
 
+
+USAGEMSG = \
+'''
+{}  INPUT_EXT  OUTPUT_PREFIX
+
+    The script offers a possibility to batch rename a bunch of files of a given
+    extension (INPUT_EXT). The new name scheme is based on the OUTPUT_PREFIX and
+    preserves previous name-based ordering (and alternatively reverses it).
+
+'''
+
+
+ERRMSG = \
+'''
+ *** extfiles_new not safe.
+     element: {}
+'''
 
 
 
@@ -39,9 +54,7 @@ if __name__ == '__main__':
     ARGSNR = len(sys.argv)
 
     if ARGSNR != 3:
-        print 'Usage:'
-        print '  ' + sys.argv[0] + '   input_ext' + '   output_prefix'
-        print
+        sys.stderr.write(USAGEMSG.format(sys.argv[0]))
         sys.exit(1)
 
 
@@ -65,9 +78,7 @@ if __name__ == '__main__':
     extfiles_new_safety = is_dict_safe_for_mv(extfiles_new)    # == extfiles_new_r_safety check
 
     if not extfiles_new_safety[0]:
-        sys.stderr.write("extfiles_new not safe." + os.linesep)
-        sys.stderr.write("element: " + extfiles_new_safety[1] + os.linesep)
-        sys.stderr.flush()
+        sys.stderr.write(ERRMSG.format(extfiles_new_safety[1]))
         sys.exit(2)
 
 
@@ -84,4 +95,3 @@ if __name__ == '__main__':
         print 'mv -v', quotes(k), quotes(extfiles_new_r[k])
 
     print
-
