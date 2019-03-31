@@ -12,6 +12,21 @@ from os.path import isfile, join
 
 
 
+USAGEMSG = \
+'''
+{}  FILES_PREFIX  [OFFSET]
+
+    The script offers the possibility to perform batch rename of the files present
+    at the current location, with the aim of reflecting their chronological order
+    (based on the modification times) in their name scheme. The core of the new name
+    is based on the FILES_PREFIX, the second part of the new name is a number
+    indicating their chronological order. An additional parameter is available if
+    the numbering is not supposed to start from 0.
+
+'''
+
+
+
 
 ERRMSG = \
 '''
@@ -56,9 +71,7 @@ if __name__ == '__main__':
     ARGSNR = len(sys.argv)
 
     if ARGSNR != 2 and ARGSNR != 3:
-        print 'Usage:'
-        print '  ' + sys.argv[0] + '   files_prefix' + '   [offset]'
-        print
+        sys.stderr.write(USAGEMSG.format(sys.argv[0]))
         sys.exit(1)
 
 
@@ -66,11 +79,7 @@ if __name__ == '__main__':
 
     PREFIX = sys.argv[1]
 
-    if ARGSNR == 2:
-        OFFSET = 0
-    if ARGSNR == 3:
-        OFFSET = int(sys.argv[2])
-
+    OFFSET = 0 if ARGSNR == 2 else int(sys.argv[2])
     
     # get list of files only
     mypath = '.'
