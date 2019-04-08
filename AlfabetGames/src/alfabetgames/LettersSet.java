@@ -1,18 +1,9 @@
-/*
- * $Author$
- * $Revision$
- */
-
-
 package alfabetgames;
 
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- *
- * @author jan
- */
+
 public class LettersSet {
 
     private Set<Letter> letters;

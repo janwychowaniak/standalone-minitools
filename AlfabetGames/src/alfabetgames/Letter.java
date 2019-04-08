@@ -1,15 +1,6 @@
-/*
- * $Author$
- * $Revision$
- */
-
-
 package alfabetgames;
 
-/**
- *
- * @author jan
- */
+
 public abstract class Letter {
     private final String letter;
 
