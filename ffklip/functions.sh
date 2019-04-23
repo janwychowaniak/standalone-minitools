@@ -17,3 +17,12 @@ get_nazwa_out () {   # get_nazwa_out $NAZWA_KLIPU $OUTPUT_DIR
     local filenamecore="${filename%.*}"
     echo "$output_dir/$filenamecore-crf.mp4"
 }
+
+get_filter_complex ()
+{
+    local generaltempo=$1
+    local atempo=$(get_atempo $generaltempo)
+    local vtempo=$(get_vtempo $generaltempo)
+    echo "-filter_complex \"[0:v]setpts=$vtempo*PTS[v];[0:a]atempo=$atempo[a]\" -map \"[v]\" -map \"[a]\""
+}
+

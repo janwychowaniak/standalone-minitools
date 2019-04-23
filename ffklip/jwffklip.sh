@@ -56,8 +56,8 @@ else
 fi
 
 
-atempo=$(get_atempo $TEMPO)
-vtempo=$(get_vtempo $TEMPO)
+# atempo=$(get_atempo $TEMPO)
+# vtempo=$(get_vtempo $TEMPO)
 
 nazwa_in=$(echo $NAZWA_KLIPU)
 nazwa_inter=$(echo $RANDOM.avi)
@@ -69,9 +69,10 @@ nazwa_out=$(get_nazwa_out $NAZWA_KLIPU $OUTPUT_DIR)
 #~ echo "nazwa_inter = $nazwa_inter"
 #~ echo "nazwa_out   = $nazwa_out"
 
+FILTER_COMPLEX=$(get_filter_complex $TEMPO)
 
 # step 1
-echo "ffmpeg -i $nazwa_in -filter_complex \"[0:v]setpts=$vtempo*PTS[v];[0:a]atempo=$atempo[a]\" -map \"[v]\" -map \"[a]\" -q:v 0 $JWFFKLIPARGSV -q:a 0 $JWFFKLIPARGSA $nazwa_inter ;"
+echo "ffmpeg -i $nazwa_in $FILTER_COMPLEX -q:v 0 $JWFFKLIPARGSV -q:a 0 $JWFFKLIPARGSA $nazwa_inter ;"
 # step 2
 echo "ffmpeg -i $nazwa_inter -c:v libx264 -preset veryfast -crf 26 -c:a aac -b:a 64k -ac 1 -sn -strict experimental $nazwa_out ;"
 # cleanup
