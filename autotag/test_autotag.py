@@ -69,12 +69,12 @@ def test_set_mp3_with_id3v2():
      ['zalewski', 'wspomnienia', 6, 'F', 'F.mp3']]
 
     expected = \
-    ['id3v2 -a "zalewski" -A "wspomnienia" -T 1 -t "A" A.mp3',
-     'id3v2 -a "zalewski" -A "wspomnienia" -T 2 -t "B" B.mp3',
-     'id3v2 -a "zalewski" -A "wspomnienia" -T 3 -t "C" C.mp3',
-     'id3v2 -a "zalewski" -A "wspomnienia" -T 4 -t "D" D.mp3',
-     'id3v2 -a "zalewski" -A "wspomnienia" -T 5 -t "E" E.mp3',
-     'id3v2 -a "zalewski" -A "wspomnienia" -T 6 -t "F" F.mp3']
+    ['id3v2 -a "zalewski" -A "wspomnienia" -T 1 -t "A" A.mp3 ;',
+     'id3v2 -a "zalewski" -A "wspomnienia" -T 2 -t "B" B.mp3 ;',
+     'id3v2 -a "zalewski" -A "wspomnienia" -T 3 -t "C" C.mp3 ;',
+     'id3v2 -a "zalewski" -A "wspomnienia" -T 4 -t "D" D.mp3 ;',
+     'id3v2 -a "zalewski" -A "wspomnienia" -T 5 -t "E" E.mp3 ;',
+     'id3v2 -a "zalewski" -A "wspomnienia" -T 6 -t "F" F.mp3 ;']
 
     assert set_mp3_with_id3v2(testcontent) == expected
 
@@ -90,11 +90,11 @@ def test_set_ogg_with_vorbiscomment():
      ['zalewski', 'wspomnienia', 6, 'F', 'F.ogg']]
 
     expected = \
-    ['vorbiscomment -w A.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=1" -t "TITLE=A"',
-     'vorbiscomment -w B.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=2" -t "TITLE=B"',
-     'vorbiscomment -w C.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=3" -t "TITLE=C"',
-     'vorbiscomment -w D.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=4" -t "TITLE=D"',
-     'vorbiscomment -w E.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=5" -t "TITLE=E"',
-     'vorbiscomment -w F.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=6" -t "TITLE=F"']
+    ['vorbiscomment -w A.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=1" -t "TITLE=A" ;',
+     'vorbiscomment -w B.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=2" -t "TITLE=B" ;',
+     'vorbiscomment -w C.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=3" -t "TITLE=C" ;',
+     'vorbiscomment -w D.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=4" -t "TITLE=D" ;',
+     'vorbiscomment -w E.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=5" -t "TITLE=E" ;',
+     'vorbiscomment -w F.ogg -t "ARTIST=zalewski" -t "ALBUM=wspomnienia" -t "TRACKNUMBER=6" -t "TITLE=F" ;']
 
     assert set_ogg_with_vorbiscomment(testcontent) == expected
