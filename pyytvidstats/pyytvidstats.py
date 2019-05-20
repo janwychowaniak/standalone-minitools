@@ -19,6 +19,8 @@ import sys
 import os
 
 from ConfigParser import SafeConfigParser
+#TODO SafeConfigParser in python3 ??
+
 
 from enum import Enum
 
@@ -252,6 +254,8 @@ def main(_args):
         videos_list = youtube.videos().list(id=ids_arg, part='statistics').execute()
     except HttpError as e:
         print('An HTTP error {} occurred:\n{}'.format(e.resp.status, e.content))
+        # TODO only print?
+        # missing proper 4xx handling
 
     videos_stats = scrape(videos_list)
 
