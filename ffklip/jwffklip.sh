@@ -9,7 +9,9 @@ cat 1>&2 <<EOF
 ./`basename $0` [CLIP_NAME] [TEMPO] [OUTPUT_DIR] <HDIM_LIMIT>
 
     The script encodes the CLIP file, changing its tempo by the TEMPO factor
-    and putting the results to OUTPUT_DIR
+    and putting the results to OUTPUT_DIR.
+    Optional HDIM_LIMIT helps scaling down the resolution, so that
+    the horizontal dimension of the output fits within the given number.
 
     Use JWFFKLIPARGSV and JWFFKLIPARGSA env vars for
     passing additional processing parameters:
@@ -60,7 +62,7 @@ TEMPO=$(echo "$2" | tr "," ".")
 OUTPUT_DIR=$(echo "$3")
 if [ $# -eq 4 ]; then HDIM_LIMIT=$(echo "$4"); fi
 
-HDIM=$(get_hdim $CLIP_NAME)
+# HDIM=$(get_hdim $CLIP_NAME)  # ?
 
 # atempo=$(get_atempo $TEMPO)
 # vtempo=$(get_vtempo $TEMPO)
@@ -79,9 +81,35 @@ name_out=$(get_nazwa_out $CLIP_NAME $OUTPUT_DIR)
 FILTER_DOWNSCALE=$(get_filter_downscale $HDIM_LIMIT)
 FILTER_COMPLEX=$(get_filter_complex $TEMPO)
 
-# step 1
-echo "ffmpeg -i $name_in $FILTER_COMPLEX -q:v 0 $JWFFKLIPARGSV -q:a 0 $JWFFKLIPARGSA $name_inter1 ;"
-# step 2
-echo "ffmpeg -i $name_inter1 -c:v libx264 -preset veryfast -crf 26 -c:a aac -b:a 64k -ac 1 -sn -strict experimental $name_out ;"
-# cleanup
-echo "rm $name_inter1 ;"
+
+process ()
+{
+    # step 1
+    echo "ffmpeg -i $name_in $FILTER_COMPLEX -q:v 0 $JWFFKLIPARGSV -q:a 0 $JWFFKLIPARGSA $name_inter1 ;"
+    # step 2
+    echo "ffmpeg -i $name_inter1 -c:v libx264 -preset veryfast -crf 26 -c:a aac -b:a 64k -ac 1 -sn -strict experimental $name_out ;"
+    # cleanup
+    echo "rm $name_inter1 ;"    
+}
+
+
+process_hdim ()
+{
+    # step 0
+    echo "ffmpeg -i $name_in $FILTER_DOWNSCALE -q:v 0 $JWFFKLIPARGSV -q:a 0 $JWFFKLIPARGSA $name_inter1 ;"
+    # step 1
+    echo "ffmpeg -i $name_inter1 $FILTER_COMPLEX -q:v 0 -q:a 0 $name_inter2 ;"
+    # step 2
+    echo "ffmpeg -i $name_inter2 -c:v libx264 -preset veryfast -crf 26 -c:a aac -b:a 64k -ac 1 -sn -strict experimental $name_out &&"
+    # cleanup
+    echo "rm $name_inter1 $name_inter2 ;"    
+}
+
+if [ -z ${HDIM_LIMIT+x} ]; then
+    # HDIM_LIMIT is unset
+    process
+else
+    # HDIM_LIMIT is set
+    process_hdim
+fi
+
