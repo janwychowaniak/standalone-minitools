@@ -26,3 +26,8 @@ get_filter_complex ()
     echo "-filter_complex \"[0:v]setpts=$vtempo*PTS[v];[0:a]atempo=$atempo[a]\" -map \"[v]\" -map \"[a]\""
 }
 
+get_filter_downscale ()
+{
+    local hlimit=$1
+    echo "-filter:v \"scale='min($hlimit,iw)':-1\""
+}

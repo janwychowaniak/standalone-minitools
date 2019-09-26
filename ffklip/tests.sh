@@ -27,6 +27,12 @@ test_get_nazwa_out ()
 }
 
 
+test_get_filter_downscale ()
+{
+    assertEquals  "$(get_filter_downscale 1280)"     "-filter:v \"scale='min(1280,iw)':-1\""
+    assertEquals  "$(get_filter_downscale 6400)"     "-filter:v \"scale='min(6400,iw)':-1\""
+}
+
 # test_get_filter_complex ()
 # {
     # TODO: fix the """"""""""""
