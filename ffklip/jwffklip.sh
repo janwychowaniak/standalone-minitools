@@ -92,7 +92,6 @@ process ()
     echo "rm $name_inter1 ;"    
 }
 
-
 process_hdim ()
 {
     # step 0
@@ -104,6 +103,7 @@ process_hdim ()
     # cleanup
     echo "rm $name_inter1 $name_inter2 ;"    
 }
+
 
 if [ -z ${HDIM_LIMIT+x} ]; then
     # HDIM_LIMIT is unset
