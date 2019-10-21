@@ -20,6 +20,7 @@ import os
 
 from ConfigParser import SafeConfigParser
 #TODO SafeConfigParser in python3 ??
+#TODO zero votes protection (/0)
 
 
 from enum import Enum
