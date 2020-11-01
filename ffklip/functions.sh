@@ -29,5 +29,5 @@ get_filter_complex ()
 get_filter_downscale ()
 {
     local hlimit=$1
-    echo "-filter:v \"scale='min($hlimit,iw)':-1\""
+    echo "-filter:v \"scale='min($hlimit,iw)':-2\""
 }
