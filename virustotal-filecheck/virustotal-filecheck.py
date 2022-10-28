@@ -2,8 +2,9 @@
 """
 Usage: virustotal-filecheck.py ARG_FILE
 
-Let's call it a convenient script, that wraps the VirusTotal get-file-report functionality
-for the purpose of conveniently sending a file inquiry from the command line.
+Let's call it a convenient script, that wraps the VirusTotal get-file-report
+functionality for the purpose of conveniently sending a file inquiry from the
+command line.
 Please provide your own API key for VT and put it into a file called "auth.py",
 as a string named "APIKEY".
 """
@@ -17,25 +18,35 @@ try:
     from auth import APIKEY
 except ImportError as e:
     print(f' *** {e}', file=sys.stderr)
-    print(' *** Put your VirusTotal "APIKEY" string in a file named "auth.py" here.', file=sys.stderr)
+    print(' *** Put your VirusTotal "APIKEY" string in a file named "auth.py" here.',
+          file=sys.stderr)
     sys.exit(2)
 
 
 VTAPIURL = 'https://www.virustotal.com/vtapi/v2/file/report'
 
 
-def get_file_hash(filename):  # raises FileNotFoundError
+# -----------------------------------------------------------------------------
+
+def get_file_hash(file_path: str) -> str:
+    """
+    Pick up the file specified, read it, compute SHA256 hash.
+    :param file_path: where to read the file from
+    :raises FileNotFoundError: when the input file is missing
+    """
     sha256_hash = hashlib.sha256()
-    with open(filename, 'rb') as f:
+    with open(file_path, 'rb') as f:
         # Read and update hash string value in blocks of 4K
         for byte_block in iter(lambda: f.read(4096), b""):
             sha256_hash.update(byte_block)
         return sha256_hash.hexdigest()
 
 
-def print_response(rj):
+def print_response(rj: dict) -> None:
     """
-    Somewhat refine the response.
+    Print the response, but somewhat refine it first.
+    We don't need all of the details prited.
+    :param rj: the response dictionary
     """
     print('---------')
     if 'permalink' not in rj:
@@ -49,17 +60,21 @@ def print_response(rj):
                 print(f"  {scanres} -> {rj['scans'][scanres]['result']}")
 
 
+# -----------------------------------------------------------------------------
+
 if __name__ == '__main__':
 
     if len(sys.argv) == 2:
-        FILENAME = sys.argv[1]
+        FILE_PATH = sys.argv[1]
     else:
         print(' *** please name a file for VT to check :)', file=sys.stderr)
+        print(file=sys.stderr)
         sys.exit(1)
 
-    FISHA256 = get_file_hash(FILENAME)
+    FISHA256 = get_file_hash(FILE_PATH)
 
-    print(f'File   :  {FILENAME}')
+    print()
+    print(f'File   :  {FILE_PATH}')
     print(f'sha256 :  {FISHA256}')
 
     params = {'apikey': APIKEY, 'resource': FISHA256}
@@ -67,5 +82,7 @@ if __name__ == '__main__':
 
     if response.ok:
         print_response(response.json())
+        print()
     else:
-        print(f' *** [{response.status_code}] -> {response.text}', file=sys.stderr)
+        print(f' *** [{response.status_code}] -> {response.text}',
+              file=sys.stderr)
