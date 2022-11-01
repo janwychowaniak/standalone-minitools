@@ -2,11 +2,12 @@
 """
 Usage: virustotal-filecheck.py ARG_FILE
 
-Let's call it a convenient script, that wraps the VirusTotal get-file-report
+Let's call it a convenience script, that wraps the VirusTotal "get-file-report"
 functionality for the purpose of conveniently sending a file inquiry from the
 command line.
-Please provide your own API key for VT and put it into a file called "auth.py",
-as a string named "APIKEY".
+
+Please provide your own API key for VirusTotal and store it in an environment
+variable called "VT_API_KEY".
 """
 
 
@@ -14,16 +15,11 @@ import sys
 import hashlib
 import requests
 
-try:
-    from auth import APIKEY
-except ImportError as e:
-    print(f' *** {e}', file=sys.stderr)
-    print(' *** Put your VirusTotal "APIKEY" string in a file named "auth.py" here.',
-          file=sys.stderr)
-    sys.exit(2)
+from os import environ as env
 
 
-VTAPIURL = 'https://www.virustotal.com/vtapi/v2/file/report'
+VT_API_URL = 'https://www.virustotal.com/vtapi/v2/file/report'
+VT_API_ENVVAR_NAME = 'VT_API_KEY'
 
 
 # -----------------------------------------------------------------------------
@@ -64,6 +60,13 @@ def print_response(rj: dict) -> None:
 
 if __name__ == '__main__':
 
+    try:
+        API_KEY = env[VT_API_ENVVAR_NAME]
+    except KeyError:
+        print(f' *** Environment variable {VT_API_ENVVAR_NAME} not found',
+              file=sys.stderr)
+        sys.exit(2)
+
     if len(sys.argv) == 2:
         FILE_PATH = sys.argv[1]
     else:
@@ -71,14 +74,15 @@ if __name__ == '__main__':
         print(file=sys.stderr)
         sys.exit(1)
 
+    #
     FISHA256 = get_file_hash(FILE_PATH)
 
     print()
     print(f'File   :  {FILE_PATH}')
     print(f'sha256 :  {FISHA256}')
 
-    params = {'apikey': APIKEY, 'resource': FISHA256}
-    response = requests.get(VTAPIURL, params=params)
+    params = {'apikey': API_KEY, 'resource': FISHA256}
+    response = requests.get(VT_API_URL, params=params)
 
     if response.ok:
         print_response(response.json())
