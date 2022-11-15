@@ -11,11 +11,10 @@ variable called "VT_API_KEY".
 """
 
 
+import os
 import sys
 import hashlib
 import requests
-
-from os import environ as env
 
 
 VT_API_URL = 'https://www.virustotal.com/vtapi/v2/file/report'
@@ -60,9 +59,8 @@ def print_response(rj: dict) -> None:
 
 if __name__ == '__main__':
 
-    try:
-        API_KEY = env[VT_API_ENVVAR_NAME]
-    except KeyError:
+    API_KEY = os.getenv(VT_API_ENVVAR_NAME)
+    if not API_KEY:
         print(f' *** Environment variable {VT_API_ENVVAR_NAME} not found',
               file=sys.stderr)
         sys.exit(2)
